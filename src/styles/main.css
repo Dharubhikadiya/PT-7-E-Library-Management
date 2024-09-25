@@ -1,0 +1,25 @@
+.book-detail-container {
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+    margin: 20px auto;
+    background-color: #f8f9fa;
+  }
+  
+  .borrow-return-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .borrow-return-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  
