@@ -37,6 +37,7 @@ const LibraryManager = () => {
   const [filteredBooks, setFilteredBooks] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedBook, setSelectedBook] = useState(null);
+  const [showForm, setShowForm] = useState(false); // Manage form visibility
 
   useEffect(() => {
     const savedBooks = localStorage.getItem("books");
@@ -87,34 +88,51 @@ const LibraryManager = () => {
     }
 
     setSelectedBook(null); 
+    setShowForm(false); 
   };
 
   const handleEditBook = (book) => {
     setSelectedBook(book); 
+    setShowForm(true); 
+  };
+
+  const toggleFormVisibility = () => {
+    setShowForm(!showForm); 
+    setSelectedBook(null); 
   };
 
   return (
       <div>
-      <div className="library-manager container mx-auto py-10">
-      
-      <div className="filters bg-white shadow-lg p-6 rounded-lg mb-6">
-        <label className="block text-center">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleSearchChange}
-            className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-3 focus:ring focus:ring-blue-200"
-            placeholder="Filter by all Genre, Author, Publication Date"
-          />
-        </label>
-      </div>
+      <nav className="bg-gray-900 text-white shadow-md sticky top-0 w-full z-50">
+        <div className="container mx-auto flex justify-between items-center p-3">
+          <div className="text-2xl font-bold">
+            <img src="https://lh5.googleusercontent.com/proxy/uYea7I2gdY40F6eFy0fARWz00ufD-14QLWnVKswMQMZUXbiytaeGG8udn3Ex7j7SuR4jmU07J_1oNAC8lNh5nQ" alt="Logo" width={60} />
+          </div>
+          
+          <div className="flex space-x-6">
+              <button onClick={toggleFormVisibility} className="hover:text-gray-200 text-lg fs-5">
+                {showForm ? "Hide Form" : "Add Books"}
+              </button>
+          </div>
 
-      <BookForm existingBook={selectedBook} onSave={handleSaveBook} />
+          <div className="flex items-center">
+              <input type="text" value={searchTerm}
+              onChange={handleSearchChange} placeholder="Filter by all Genre, Author, Publication Date" className="w-64 p-2 rounded-l-md text-gray-900"/>
+              <button className="bg-blue-300 p-2 px-3 rounded-r-md hover:bg-blue-400 text-blue-900 font-bold">Search</button>
+          </div>
+        </div>
+      </nav>
+
+      <div className="library-manager container mx-auto pb-10">
+      
+      {showForm && (
+        <BookForm existingBook={selectedBook} onSave={handleSaveBook} />
+      )}
 
       <BookList books={filteredBooks} onEdit={handleEditBook} />
     </div>
-      </div>
-    );
+  </div>
+  );
 };
 
 export default LibraryManager;

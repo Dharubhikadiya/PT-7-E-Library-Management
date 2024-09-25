@@ -93,7 +93,7 @@ const BookForm = ({ existingBook, onSave }) => {
 
       <button
         type="submit"
-        className="bg-blue-600 text-white font-bold py-3 px-6 rounded-md w-full hover:bg-blue-700 transition duration-300"
+        className="bg-gray-900 text-white fs-5 py-3 px-6 rounded-md w-full hover:bg-gray-700 transition duration-300"
       >
         Save Book
       </button>

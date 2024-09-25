@@ -43,14 +43,14 @@ const BookDetail = () => {
         </p>
 
         <button
-          className="borrow-return-button bg-green-500 text-white py-2 px-6 rounded-md hover:bg-green-600 w-full mb-4"
+          className="borrow-return-button bg-gray-800 text-white py-2 px-6 rounded-md hover:bg-gray-600 w-full mb-4"
           onClick={handleBorrowReturn}
         >
           {book.status === "available" ? "Borrow" : "Return"}
         </button>
       </div>
       <Link to="/">
-        <button className="back-button bg-blue-500 text-white px-6 py-2 rounded-md hover:bg-blue-600 mt-6">
+        <button className="back-button bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-600 mt-6">
           Back
         </button>
       </Link>
